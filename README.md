@@ -1,3 +1,7 @@
+<img width="1865" height="899" alt="Screenshot 2025-08-13 000925" src="https://github.com/user-attachments/assets/aa53bf9f-8023-45b8-a50b-f0eaddba275d" />
+![Uploading Screenshot 2025-08-13 001155.png…]()
+
+
 # Face-detection
 This AI Face Detection System is a real-time face recognition application built with Python, OpenCV, and Flask. It allows users to register faces, train a recognition model, and detect faces in live video streams through a user-friendly web interface.
 📌 Overview
