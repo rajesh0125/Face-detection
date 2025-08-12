@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Face Detection</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-image: url("{{ url_for('static', filename='bk.jpg') }}"); /* Set background image */
+            background-size: cover; /* Cover entire viewport */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Ensure image stays fixed on scroll */
+        }
+
+        .container {
+            border: 2px solid black; /* Beautiful green border */
+            border-radius: 20px; /* Rounded corners for smoothness */
+            padding: 80px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); /* Adjust shadow syntax */
+            background-color: rgba(16,56,25,0.5); /* Crisp background for contrast */
+            text-align: center; /* Centered content for harmony */
+        }
+
+        h1 {
+            color: yellow;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #4CAF50; /* Vibrant green */
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            font-size: 18px;
+            margin: 20px;
+            cursor: pointer;
+            border-radius: 20px; /* Curved buttons for a modern look */
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Darker green for hover */
+            transform: scale(1.05);
+        }
+
+        button::after {
+            content: '';
+            position: absolute;
+            width: 300%;
+            height: 300%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.5s;
+        }
+
+        button:hover::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        #video-container {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+            border: 2px solid #4CAF50;
+            border-radius: 20px; /* Smooth corners */
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.5s ease;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Media query for responsiveness */
+        @media (max-width: 600px) {
+            button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Face Detection:</h1>
+        <button id="start-button" aria-label="Start video feed">Start</button>
+        <button id="quit-button" aria-label="Stop video feed">Quit</button>
+        <div id="video-container" aria-hidden="true">
+            <img id="video" src="" alt="Video feed" />
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('start-button').onclick = function() {
+            document.getElementById('video-container').style.display = 'block';
+            document.getElementById('video-container').setAttribute('aria-hidden', 'false');
+            document.getElementById('video').src = "{{ url_for('video_feed') }}";
+        };
+
+        document.getElementById('quit-button').onclick = function() {
+            document.getElementById('video-container').style.display = 'none';
+            document.getElementById('video-container').setAttribute('aria-hidden', 'true');
+            document.getElementById('video').src = '';
+            fetch('/quit'); // Send request to stop the video feed
+        };
+    </script>
+</body>
+</html>
