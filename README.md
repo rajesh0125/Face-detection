@@ -1,5 +1,5 @@
-<img width="1865" height="899" alt="Screenshot 2025-08-13 000925" src="https://github.com/user-attachments/assets/aa53bf9f-8023-45b8-a50b-f0eaddba275d" />
-<img width="1892" height="884" alt="Screenshot 2025-08-13 001155" src="https://github.com/user-attachments/assets/91ed977e-340a-427b-8100-90e4ed4060fd" />
+<img width="1865" height="899" alt="Screenshot 2025-08-13 000925" src="https://github.com/user-attachments/assets/3607f79d-74c1-47bc-ac7b-473398ead3cb" />
+<img width="1892" height="884" alt="Screenshot 2025-08-13 001155" src="https://github.com/user-attachments/assets/3ac5417f-e0fe-4a0c-9a1a-4f3d99957537" />
 
 
 # Face-detection
